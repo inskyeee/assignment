@@ -34,7 +34,7 @@ def data_collection():
     form = QuestionnaireForm()
     if form.validate_on_submit():
         # Save form data to a text file
-        with open("/student-data.txt", "a") as file:
+        with open("student-data.txt", "a") as file:
             file.write(f"{form.name.data}, {form.student_number.data}, {form.email.data}, {form.grades.data}, {form.satisfaction.data}, {form.improvements.data}\n")
         return redirect(url_for('thank_you'))
     return render_template('data-collection.html', form=form)
