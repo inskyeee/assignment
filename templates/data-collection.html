@@ -6,65 +6,51 @@
     <title>Data Collection - GIC Student Progress Tracker</title>
     <!-- Link to external CSS file -->
     <!-- IMPORTANT: pls make sure, that here u have a right link to css file if styles are not working-->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
     <!-- Navigation Bar: Allows users to navigate between different pages -->
     <nav class="main-nav">
         <ul>     <!-- These are the list items that will be shown in nav bar -->
-            <li><a href="welcome.html">Home</a></li>
-            <li><a href="information.html">Information</a></li>
-            <li><a href="data-collection.html" class="active">Data Collection</a></li>
+            <li><a href="/welcome">Home</a></li>
+            <li><a href="/information">Information</a></li>
+            <li><a href="/data-collection" class="active">Data Collection</a></li>
         </ul>
     </nav>
 
     <!-- Data Collection Form Section -->
     <section class="data-collection-section">
-        
         <h1>Student Progress Questionnaire</h1>
         <p>Please fill out this questionnaire to help us assess and improve student experiences and outcomes at GIC.</p>
-        <!-- When the form is submitted we will redirect person on thankyou.html file -->
-        <!-- Note: As we don't have any backend for now, we are using get method, but when we'll use flask - it will be post -->
-        <form id="student-progress-form" action="thankyou.html" method="get">
-            <!-- div to enter name -->
+        
+        <!-- WTForms integration -->
+        <form id="student-progress-form" method="post">
+            {{ form.hidden_tag() }}
             <div class="form-group">
-                <label for="name">Name: <span class="required">*</span></label>
-                <input type="text" id="name" name="name" required> <!-- Text input for the name, marked as required -->
+                {{ form.name.label }} <span class="required">*</span>
+                {{ form.name(class_='form-control') }}
             </div>
-            <!-- div for student number -->
             <div class="form-group">
-                <label for="student-number">Student Number: <span class="required">*</span></label>
-                <input type="text" id="student-number" name="student-number" required> <!-- Text input for the student number, marked as required -->
+                {{ form.student_number.label }} <span class="required">*</span>
+                {{ form.student_number(class_='form-control') }}
             </div>
-            <!-- div for email adress -->
             <div class="form-group">
-                <label for="email">Email Address: <span class="required">*</span></label>
-                <input type="email" id="email" name="email" required> <!-- Email input for the email address, marked as required -->
-                <!-- Additionally, the line above checks whether the email address format is entered correctly. -->
+                {{ form.email.label }} <span class="required">*</span>
+                {{ form.email(class_='form-control') }}
             </div>
-            <!-- div with a large text area to input grades obtained -->
             <div class="form-group">
-                <label for="grades">Grades obtained in courses (Please list): <span class="required">*</span></label>
-                <textarea id="grades" name="grades" rows="4" required></textarea> <!-- Textarea for inputting grades, marked as required -->
+                {{ form.grades.label }} <span class="required">*</span>
+                {{ form.grades(class_='form-control') }}
             </div>
-            <!-- div with multiple selection (student's satisfaction) -->
             <div class="form-group">
-                <label for="satisfaction">Overall satisfaction with the academic experience:</label>
-                <select id="satisfaction" name="satisfaction"> <!-- Select for satisfaction level -->
-                    <option value="none" disabled selected>Click to select</option>
-                    <option value="very_satisfied">Very Satisfied</option>
-                    <option value="satisfied">Satisfied</option>
-                    <option value="neutral">Neutral</option>
-                    <option value="dissatisfied">Dissatisfied</option>
-                    <option value="very_dissatisfied">Very Dissatisfied</option>
-                </select>
+                {{ form.satisfaction.label }}
+                {{ form.satisfaction(class_='form-control') }}
             </div>
-            <!-- div with textarea block to suggest any improvements (it's optional) -->
             <div class="form-group">
-                <label for="improvements">Suggestions for improvement:</label>
-                <textarea id="improvements" name="improvements" rows="4"></textarea> <!-- Textarea block for improvements -->
+                {{ form.improvements.label }}
+                {{ form.improvements(class_='form-control') }}
             </div>
-            <button type="submit" class="submit-btn">Submit</button> <!-- Submission button for the form -->
+            {{ form.submit(class_="submit-btn") }}
         </form>
     </section>
 
