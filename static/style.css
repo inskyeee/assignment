@@ -54,6 +54,7 @@ label {
     margin-bottom: 8px;
 }
 
+
 input[type="text"], input[type="email"], textarea, select {
     width: 100%; /* Ensures input fields take up the full container width */
     padding: 10px;
@@ -84,11 +85,6 @@ input[type="submit"]:hover, button:hover {
     background-color: #160943; /* Deep blue background */
     color: white; /* Text color for contrast */
     margin: 0;
-}
-
-/* Style for indicating required fields */
-.required {
-    color: red;
 }
 
 /* Styles for thankyou.html items */
@@ -124,4 +120,19 @@ input[type="submit"]:hover, button:hover {
     background-color: #5643b5;
     transition: 0.75s; /* Smooth transition effect */
      
+}
+
+/* Style for indicating required fields */
+.required {
+    display: block;
+    color: red;
+    margin-left: 5px; /* Small margin to separate the '*' from the label */
+}
+
+/* Style for the forms class */
+.form-group {
+    display: flex; /* Aligns form items horizontally, so our red '*' sign will be on the same line */
+    align-items: center;
+    margin-bottom: 8px;
+    width: max-content; /* Ensures the form items take up the minimum required space */
 }
