@@ -25,10 +25,14 @@
         
         <!-- WTForms integration -->
         <form id="student-progress-form" method="post">
+            <!-- This line is used to prevent CSRF attacks (I don't know how it works yet, but flask requires it) -->
             {{ form.hidden_tag() }}
             <div class="form-group">
+                <!-- This is the label for the input field -->
                 {{ form.name.label }} <span class="required">*</span>
             </div>
+            <!-- This is the input field itself -->
+            <!-- Everything else is quite simmilar, so there will be no comments -->
             {{ form.name(class_='form-control') }}
             <div class="form-group">
                 {{ form.student_number.label }} <span class="required">*</span>
